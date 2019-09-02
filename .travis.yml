@@ -1,0 +1,58 @@
+notifications:
+  email: false
+git:
+  quiet: true
+  depth: 1
+
+env:
+  global:
+  - TERM=dumb
+
+language: java
+jdk: openjdk8
+
+addons:
+  apt:
+    update: true
+    packages:
+    - bash
+
+install: true
+
+jobs:
+  include:
+
+  - stage: test
+    jdk: openjdk8
+    name: mvn
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw clean ; ./mvnw -Pcapsule ; java -jar ./target/*-all.jar
+
+  - stage: test
+    jdk: openjdk11
+    name: test jdk11
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw clean ; ./mvnw -Passembly ; java -jar ./target/*-all.jar
+
+  - stage: test
+    jdk: openjdk8
+    name: mvn
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw clean ; ./mvnw ; java -jar ./target/*-all.jar
+
+  - stage: test
+    jdk: openjdk11
+    name: test jdk11
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw clean ; ./mvnw ; java -jar ./target/*-all.jar
+
+  - stage: test
+    jdk: openjdk8
+    name: display-property-updates
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw versions:display-property-updates -U
+
+  - stage: test
+    jdk: openjdk11
+    name: display-property-updates jdk11
+    script: cd $TRAVIS_BUILD_DIR && ./mvnw versions:display-property-updates -U
+
+cache:
+  packages: true
+  directories:
+  - ~/.m2

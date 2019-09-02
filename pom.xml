@@ -30,6 +30,7 @@
     <deltaspike.version>1.9.1</deltaspike.version>
     <javax.inject.version>1</javax.inject.version>
     <weld-servlet.version>3.0.0.Alpha1</weld-servlet.version>
+    <javax.activation.version>1.2.0</javax.activation.version>
     <capsule-maven-plugin.version>1.5.1</capsule-maven-plugin.version>
     <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
     <spotbugs-maven-plugin.version>3.1.12.2</spotbugs-maven-plugin.version>
@@ -133,6 +134,20 @@
   </build>
 
   <profiles>
+    <profile>
+      <id>!jdk8</id>
+      <activation>
+        <jdk>!1.8</jdk>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.sun.activation</groupId>
+          <artifactId>javax.activation</artifactId>
+          <version>${javax.activation.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+
     <profile>
       <id>assembly</id>
       <build>

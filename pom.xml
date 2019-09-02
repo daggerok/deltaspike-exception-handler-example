@@ -26,6 +26,7 @@
     <cdi-api.version>2.0.SP1</cdi-api.version>
     <slf4j.version>2.0.0-alpha0</slf4j.version>
     <junit4.version>4.13-beta-3</junit4.version>
+    <disruptor.version>3.4.2</disruptor.version>
     <weld-se.version>3.1.2.Final</weld-se.version>
     <deltaspike.version>1.9.1</deltaspike.version>
     <javax.inject.version>1</javax.inject.version>
@@ -141,10 +142,15 @@
       </activation>
       <dependencies>
         <dependency>
+          <groupId>com.lmax</groupId>
+          <artifactId>disruptor</artifactId>
+          <version>${disruptor.version}</version>
+        </dependency>
+        <!--<dependency>
           <groupId>com.sun.activation</groupId>
           <artifactId>javax.activation</artifactId>
           <version>${javax.activation.version}</version>
-        </dependency>
+        </dependency>-->
       </dependencies>
     </profile>
 

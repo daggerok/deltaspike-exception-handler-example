@@ -35,7 +35,7 @@
     <capsule-maven-plugin.version>1.5.1</capsule-maven-plugin.version>
     <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
     <spotbugs-maven-plugin.version>3.1.12.2</spotbugs-maven-plugin.version>
-    <jackson.version>2.10.0.pr1</jackson.version>
+    <jackson.version>2.12.6.1</jackson.version>
   </properties>
 
   <dependencies>
